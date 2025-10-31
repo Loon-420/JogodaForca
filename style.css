@@ -2,14 +2,16 @@
 /* 1. VARIÁVEIS CSS DINÂMICAS (TEMA) */
 /* =================================== */
 :root {
-    /* Cor principal (alterada pelo usuário no JS) */
     --cor-principal: #4CAF50; 
-    --cor-secundaria-hover: #388E3C; /* Uma sombra da cor principal para hover */
+    --cor-secundaria-hover: #388E3C; 
     --cor-texto-principal: #ffffff;
     --cor-fundo-secundario: #f0f0f0; 
-    --cor-erro: #D32F2F; /* Vermelho padrão para erro */
-    --cor-botao-secundario: #6c757d; /* Cinza para botões secundários */
+    --cor-erro: #D32F2F; 
+    --cor-acerto: #4CAF50; /* Verde para acertos */
+    --cor-botao-secundario: #6c757d; 
     --cor-botao-secundario-hover: #5a6268; 
+    --cor-borda-input: #ccc;
+    --cor-borda-input-foco: var(--cor-principal);
 }
 
 /* =================================== */
@@ -35,7 +37,6 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos de Cartão */
 .secao-card {
     background-color: white;
     padding: 20px;
@@ -48,18 +49,15 @@ header {
 /* 3. ELEMENTOS DINÂMICOS E BOTÕES */
 /* =================================== */
 
-/* Cor de Fundo dos Elementos Primários */
 .cor-principal-fundo {
     background-color: var(--cor-principal);
     color: var(--cor-texto-principal);
 }
 
-/* Cor do Texto dos Elementos Primários */
 .cor-principal-texto {
     color: var(--cor-principal);
 }
 
-/* Botões Primários */
 .btn-primary {
     background-color: var(--cor-principal);
     color: var(--cor-texto-principal);
@@ -76,7 +74,6 @@ header {
     background-color: var(--cor-secundaria-hover);
 }
 
-/* Botões Secundários */
 .btn-secondary {
     background-color: var(--cor-botao-secundario);
     color: var(--cor-texto-principal);
@@ -87,13 +84,12 @@ header {
     margin-top: 10px;
     font-size: 1em;
     transition: background-color 0.3s;
-    margin-left: 10px; /* Espaçamento entre botões */
+    margin-left: 10px; 
 }
 
 .btn-secondary:hover {
     background-color: var(--cor-botao-secundario-hover);
 }
-
 
 /* =================================== */
 /* 4. SEÇÃO DE FOTO E PERSONALIZAÇÃO */
@@ -122,22 +118,56 @@ header {
     color: #555;
 }
 
-.select-personalizado {
+.select-personalizado, .input-personalizado {
     padding: 8px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--cor-borda-input);
     font-size: 1em;
-    margin-right: 10px;
+    margin: 5px;
+    transition: border-color 0.3s;
+}
+
+.select-personalizado:focus, .input-personalizado:focus {
+    outline: none;
+    border-color: var(--cor-borda-input-foco);
+    box-shadow: 0 0 0 2px rgba(var(--cor-principal-rgb), 0.3); /* Ajustar rgb no JS */
 }
 
 /* =================================== */
-/* 5. JOGO DA FORCA */
+/* 5. INFORMAÇÕES DO JOGADOR / DICAS */
+/* =================================== */
+.info-jogador-atual {
+    background-color: var(--cor-fundo-secundario);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+}
+.dica-display {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #666;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 5px solid var(--cor-principal);
+}
+#textoDica {
+    font-weight: normal;
+    color: #333;
+}
+
+/* =================================== */
+/* 6. JOGO DA FORCA */
 /* =================================== */
 
 .palavra-display {
-    font-size: 2em;
-    letter-spacing: 10px;
-    margin-bottom: 20px;
+    font-size: 2.2em; /* Um pouco maior */
+    letter-spacing: 12px; /* Espaçamento maior */
+    margin-bottom: 25px;
     font-weight: bold;
 }
 
@@ -145,35 +175,36 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 5px;
+    gap: 6px; /* Espaçamento maior entre teclas */
     margin-top: 20px;
 }
 
 .btn-letra {
-    background-color: #ccc;
+    background-color: #e0e0e0; /* Cor mais suave */
     color: #333;
     border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
+    width: 35px; /* Teclas um pouco maiores */
+    height: 35px;
+    border-radius: 6px; /* Bordas mais arredondadas */
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.2s, opacity 0.2s;
+    font-size: 1.1em; /* Fonte um pouco maior */
+    transition: background-color 0.2s, opacity 0.2s, transform 0.1s;
 }
 
 .btn-letra:not([disabled]):hover {
     background-color: var(--cor-principal);
     color: var(--cor-texto-principal);
+    transform: translateY(-2px); /* Efeito de elevação */
 }
 
-/* Estilos de letras já usadas */
 .btn-letra[disabled] {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: default;
 }
 
 .btn-letra.acerto {
-    background-color: var(--cor-principal);
+    background-color: var(--cor-acerto);
     color: var(--cor-texto-principal);
 }
 
@@ -201,7 +232,7 @@ header {
 .corda { width: 5px; height: 30px; top: 5px; right: 30px; }
 
 /* ======================================= */
-/* ESTILOS DAS PARTES DO BONECO (PARA DESAPARECER) */
+/* ESTILOS DAS PARTES DO BONECO (AJUSTADO E BONITINHO) */
 /* ======================================= */
 
 #cabeca-container {
@@ -210,12 +241,15 @@ header {
     height: 50px;
     border-radius: 50%;
     top: 25px; 
-    right: 20px; 
+    left: 73px; /* Centralizando melhor com a corda */
     overflow: hidden; 
     background-color: #f0f0f0; 
     border: 2px solid #555; 
     transition: opacity 0.5s ease-in-out;
-    opacity: 0; /* Começa invisível, aparece no primeiro erro */
+    opacity: 0; 
+    display: flex; /* Para centralizar a imagem dentro do container */
+    justify-content: center;
+    align-items: center;
 }
 #cabeca-foto {
     width: 100%;
@@ -228,12 +262,71 @@ header {
     position: absolute;
     background-color: #555; /* Cor neutra para o boneco */
     transition: opacity 0.5s ease-in-out;
-    opacity: 1; /* Começa visível */
+    opacity: 1; 
+    left: 50%; 
+    transform: translateX(-50%); 
 }
 
-/* Posições e tamanhos para um boneco mais proporcional */
-#corpo { width: 5px; height: 60px; top: 75px; right: 40px; transform: translateX(-50%); }
-#bracoEsq { width: 40px; height: 5px; top: 85px; right: 40px; transform: rotate(45deg); transform-origin: top left; }
-#bracoDir { width: 40px; height: 5px; top: 85px; right: 10px; transform: rotate(-45deg); transform-origin: top right; }
-#pernaEsq { width: 50px; height: 5px; top: 130px; right: 35px; transform: rotate(-45deg); transform-origin: top left; }
-#pernaDir { width: 50px; height: 5px; top: 130px; right: -5px; transform: rotate(45deg); transform-origin: top right; }
+/* Posições e tamanhos para um boneco mais proporcional e alinhado */
+#corpo { 
+    width: 5px; 
+    height: 60px; 
+    top: 75px; 
+}
+#bracoEsq { 
+    width: 40px; 
+    height: 5px; 
+    top: 85px; 
+    left: 50%; 
+    transform: translateX(-50%) rotate(-45deg) translateX(-20px); 
+    transform-origin: center; 
+}
+#bracoDir { 
+    width: 40px; 
+    height: 5px; 
+    top: 85px; 
+    left: 50%; 
+    transform: translateX(-50%) rotate(45deg) translateX(20px); 
+    transform-origin: center; 
+}
+#pernaEsq { 
+    width: 50px; 
+    height: 5px; 
+    top: 130px; 
+    left: 50%; 
+    transform: translateX(-50%) rotate(45deg) translateX(-15px); 
+    transform-origin: center; 
+}
+#pernaDir { 
+    width: 50px; 
+    height: 5px; 
+    top: 130px; 
+    left: 50%; 
+    transform: translateX(-50%) rotate(-45deg) translateX(15px); 
+    transform-origin: center; 
+} 
+
+/* =================================== */
+/* 7. RESULTADOS FINAIS */
+/* =================================== */
+.lista-resultados {
+    margin-top: 20px;
+    text-align: left;
+}
+.resultado-jogador {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.resultado-jogador strong {
+    color: var(--cor-principal);
+}
+.resultado-jogador .pontuacao {
+    font-weight: bold;
+    color: #333;
+}
