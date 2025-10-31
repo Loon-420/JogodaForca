@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca PWA</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50"> 
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="cor-principal-fundo">
+        <h1>Jogo da Forca Personalizado</h1>
+    </header>
+
+    <main class="container">
+        
+        <section id="secaoPersonalizacao" class="secao-card">
+            <h2>⚙️ Personalização</h2>
+            
+            <div class="bloco-personalizacao">
+                <h3>Foto de Perfil</h3>
+                <div class="foto-perfil-container">
+                    <img id="previewFoto" 
+                         src="./icon-192x192.png" 
+                         alt="Foto do Participante" 
+                         class="foto-perfil">
+                </div>
+                <input type="file" id="inputFotoParticipante" accept="image/*" style="display: none;"> 
+                <button id="botaoEscolherFoto" class="btn-primary">Escolher Foto</button>
+                <p id="statusFoto" class="mensagem-status"></p>
+            </div>
+            
+            <hr>
+
+            <div class="bloco-personalizacao">
+                <h3>Cor do Tema</h3>
+                <label for="inputCorTema">Cor Principal:</label>
+                <input type="color" id="inputCorTema" value="#4CAF50">
+                <button id="botaoSalvarTema" class="btn-primary">Salvar Tema</button>
+            </div>
+        </section>
+
+        <section id="secaoJogo" class="secao-card">
+            <h2>🎮 O Jogo</h2>
+
+            <div id="palavraDisplay" class="palavra-display cor-principal-texto">
+                _ _ _ _ _ _ _
+            </div>
+
+            <div id="forcaDesenho" class="forca-desenho">
+                <div class="parte-forca base"></div>
+                <div class="parte-forca viga"></div>
+                <div class="parte-forca topo"></div>
+                <div class="parte-forca corda"></div>
+                <div id="cabeca" class="parte-boneco"></div>
+                <div id="corpo" class="parte-boneco"></div>
+                <div id="bracoEsq" class="parte-boneco"></div>
+                <div id="bracoDir" class="parte-boneco"></div>
+                <div id="pernaEsq" class="parte-boneco"></div>
+                <div id="pernaDir" class="parte-boneco"></div>
+            </div>
+
+            <div id="teclado" class="teclado-letras">
+                </div>
+
+            <p id="mensagemJogo" class="mensagem-status cor-principal-texto">Status do Jogo: Clique em A para começar!</p>
+
+            <button id="botaoNovoJogo" class="btn-primary">Novo Jogo</button>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
