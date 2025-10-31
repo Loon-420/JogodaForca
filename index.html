@@ -18,7 +18,22 @@
 
     <main class="container">
         
-        <section id="secaoPersonalizacao" class="secao-card">
+        <section id="secaoMenu" class="secao-card">
+            <h2>Escolha a Categoria</h2>
+            <div class="bloco-personalizacao">
+                <label for="selectCategoria">Selecione uma categoria:</label>
+                <select id="selectCategoria" class="select-personalizado">
+                    <option value="aleatorio">Aleatório</option>
+                    <option value="animais">Animais</option>
+                    <option value="carros">Carros</option>
+                    <option value="paises">Países</option>
+                </select>
+                <button id="botaoComecarJogo" class="btn-primary">Começar Jogo</button>
+            </div>
+            <button id="botaoIrParaPersonalizacao" class="btn-secondary">⚙️ Personalizar Jogo</button>
+        </section>
+
+        <section id="secaoPersonalizacao" class="secao-card" style="display: none;">
             <h2>⚙️ Personalização</h2>
             
             <div class="bloco-personalizacao">
@@ -42,9 +57,10 @@
                 <input type="color" id="inputCorTema" value="#4CAF50">
                 <button id="botaoSalvarTema" class="btn-primary">Salvar Tema</button>
             </div>
+            <button id="botaoVoltarParaMenu" class="btn-secondary">Voltar ao Menu</button>
         </section>
 
-        <section id="secaoJogo" class="secao-card">
+        <section id="secaoJogo" class="secao-card" style="display: none;">
             <h2>🎮 O Jogo</h2>
 
             <div id="palavraDisplay" class="palavra-display cor-principal-texto">
@@ -56,7 +72,11 @@
                 <div class="parte-forca viga"></div>
                 <div class="parte-forca topo"></div>
                 <div class="parte-forca corda"></div>
-                <div id="cabeca" class="parte-boneco"></div>
+                
+                <div id="cabeca-container">
+                    <img id="cabeca-foto" src="./icon-192x192.png" alt="Foto do Participante" />
+                </div>
+
                 <div id="corpo" class="parte-boneco"></div>
                 <div id="bracoEsq" class="parte-boneco"></div>
                 <div id="bracoDir" class="parte-boneco"></div>
@@ -65,11 +85,12 @@
             </div>
 
             <div id="teclado" class="teclado-letras">
-                </div>
+            </div>
 
-            <p id="mensagemJogo" class="mensagem-status cor-principal-texto">Status do Jogo: Clique em A para começar!</p>
+            <p id="mensagemJogo" class="mensagem-status cor-principal-texto">Status do Jogo: Selecione uma categoria!</p>
 
             <button id="botaoNovoJogo" class="btn-primary">Novo Jogo</button>
+            <button id="botaoVoltarAoMenuJogo" class="btn-secondary">Voltar ao Menu</button>
         </section>
 
     </main>
