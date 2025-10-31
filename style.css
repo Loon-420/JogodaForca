@@ -1,0 +1,186 @@
+/* =================================== */
+/* 1. VARIÁVEIS CSS DINÂMICAS (TEMA) */
+/* =================================== */
+:root {
+    /* Cor principal (alterada pelo usuário no JS) */
+    --cor-principal: #4CAF50; 
+    --cor-secundaria: #388E3C; /* Uma sombra da cor principal */
+    --cor-texto-principal: #ffffff;
+    --cor-fundo-secundario: #f0f0f0; 
+    --cor-erro: #D32F2F; /* Vermelho padrão para erro */
+}
+
+/* =================================== */
+/* 2. ESTILOS GERAIS E LAYOUT */
+/* =================================== */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo-secundario);
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+header {
+    color: var(--cor-texto-principal);
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de Cartão */
+.secao-card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* =================================== */
+/* 3. ELEMENTOS DINÂMICOS */
+/* =================================== */
+
+/* Cor de Fundo dos Elementos Primários */
+.cor-principal-fundo {
+    background-color: var(--cor-principal);
+    color: var(--cor-texto-principal);
+}
+
+/* Cor do Texto dos Elementos Primários */
+.cor-principal-texto {
+    color: var(--cor-principal);
+}
+
+/* Botões */
+.btn-primary {
+    background-color: var(--cor-principal);
+    color: var(--cor-texto-principal);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* =================================== */
+/* 4. SEÇÃO DE FOTO */
+/* =================================== */
+.bloco-personalizacao {
+    margin: 15px 0;
+}
+
+.foto-perfil-container {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 10px auto;
+    border: 3px solid var(--cor-principal); /* Borda usa a cor do tema! */
+}
+.foto-perfil {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mensagem-status {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* =================================== */
+/* 5. JOGO DA FORCA */
+/* =================================== */
+
+.palavra-display {
+    font-size: 2em;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.teclado-letras {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.btn-letra {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.btn-letra:not([disabled]):hover {
+    background-color: var(--cor-principal);
+    color: var(--cor-texto-principal);
+}
+
+/* Estilos de letras já usadas */
+.btn-letra[disabled] {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.btn-letra.acerto {
+    background-color: var(--cor-principal);
+    color: var(--cor-texto-principal);
+}
+
+.btn-letra.erro {
+    background-color: var(--cor-erro);
+    color: var(--cor-texto-principal);
+}
+
+/* Desenho da Forca (Estilos de posicionamento) */
+.forca-desenho {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    margin: 20px auto;
+    border-bottom: 5px solid black;
+}
+
+/* Estilos das partes da forca */
+.parte-forca {
+    position: absolute;
+    background-color: black;
+}
+.base { width: 100%; height: 5px; bottom: 0; left: 0; }
+.viga { width: 5px; height: 100%; bottom: 5px; left: 20px; }
+.topo { width: 150px; height: 5px; top: 0; left: 20px; }
+.corda { width: 5px; height: 30px; top: 5px; right: 30px; }
+
+/* Estilos das partes do Boneco (escondidas por padrão) */
+.parte-boneco {
+    position: absolute;
+    background-color: var(--cor-erro); /* Boneco na cor de erro */
+    display: none; /* Escondido por padrão */
+}
+#cabeca { width: 30px; height: 30px; border-radius: 50%; top: 35px; right: 25px; }
+#corpo { width: 5px; height: 50px; top: 65px; right: 39px; transform: translateX(50%); }
+#bracoEsq { width: 30px; height: 5px; top: 75px; right: 39px; transform: rotate(45deg); transform-origin: top left; }
+#bracoDir { width: 30px; height: 5px; top: 75px; right: 15px; transform: rotate(-45deg); transform-origin: top right; }
+#pernaEsq { width: 40px; height: 5px; top: 110px; right: 39px; transform: rotate(-45deg); transform-origin: top left; }
+#pernaDir { width: 40px; height: 5px; top: 110px; right: 10px; transform: rotate(45deg); transform-origin: top right; }
