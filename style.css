@@ -4,10 +4,12 @@
 :root {
     /* Cor principal (alterada pelo usuário no JS) */
     --cor-principal: #4CAF50; 
-    --cor-secundaria: #388E3C; /* Uma sombra da cor principal */
+    --cor-secundaria-hover: #388E3C; /* Uma sombra da cor principal para hover */
     --cor-texto-principal: #ffffff;
     --cor-fundo-secundario: #f0f0f0; 
     --cor-erro: #D32F2F; /* Vermelho padrão para erro */
+    --cor-botao-secundario: #6c757d; /* Cinza para botões secundários */
+    --cor-botao-secundario-hover: #5a6268; 
 }
 
 /* =================================== */
@@ -43,7 +45,7 @@ header {
 }
 
 /* =================================== */
-/* 3. ELEMENTOS DINÂMICOS */
+/* 3. ELEMENTOS DINÂMICOS E BOTÕES */
 /* =================================== */
 
 /* Cor de Fundo dos Elementos Primários */
@@ -57,7 +59,7 @@ header {
     color: var(--cor-principal);
 }
 
-/* Botões */
+/* Botões Primários */
 .btn-primary {
     background-color: var(--cor-principal);
     color: var(--cor-texto-principal);
@@ -71,11 +73,30 @@ header {
 }
 
 .btn-primary:hover {
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-secundaria-hover);
 }
 
+/* Botões Secundários */
+.btn-secondary {
+    background-color: var(--cor-botao-secundario);
+    color: var(--cor-texto-principal);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    margin-left: 10px; /* Espaçamento entre botões */
+}
+
+.btn-secondary:hover {
+    background-color: var(--cor-botao-secundario-hover);
+}
+
+
 /* =================================== */
-/* 4. SEÇÃO DE FOTO */
+/* 4. SEÇÃO DE FOTO E PERSONALIZAÇÃO */
 /* =================================== */
 .bloco-personalizacao {
     margin: 15px 0;
@@ -87,7 +108,7 @@ header {
     border-radius: 50%;
     overflow: hidden;
     margin: 10px auto;
-    border: 3px solid var(--cor-principal); /* Borda usa a cor do tema! */
+    border: 3px solid var(--cor-principal); 
 }
 .foto-perfil {
     width: 100%;
@@ -99,6 +120,14 @@ header {
     margin-top: 5px;
     font-size: 0.9em;
     color: #555;
+}
+
+.select-personalizado {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    margin-right: 10px;
 }
 
 /* =================================== */
@@ -153,7 +182,7 @@ header {
     color: var(--cor-texto-principal);
 }
 
-/* Desenho da Forca (Estilos de posicionamento) */
+/* Desenho da Forca */
 .forca-desenho {
     position: relative;
     width: 200px;
@@ -162,7 +191,6 @@ header {
     border-bottom: 5px solid black;
 }
 
-/* Estilos das partes da forca */
 .parte-forca {
     position: absolute;
     background-color: black;
@@ -172,15 +200,40 @@ header {
 .topo { width: 150px; height: 5px; top: 0; left: 20px; }
 .corda { width: 5px; height: 30px; top: 5px; right: 30px; }
 
-/* Estilos das partes do Boneco (escondidas por padrão) */
+/* ======================================= */
+/* ESTILOS DAS PARTES DO BONECO (PARA DESAPARECER) */
+/* ======================================= */
+
+#cabeca-container {
+    position: absolute;
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    top: 25px; 
+    right: 20px; 
+    overflow: hidden; 
+    background-color: #f0f0f0; 
+    border: 2px solid #555; 
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0; /* Começa invisível, aparece no primeiro erro */
+}
+#cabeca-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block; 
+}
+
 .parte-boneco {
     position: absolute;
-    background-color: var(--cor-erro); /* Boneco na cor de erro */
-    display: none; /* Escondido por padrão */
+    background-color: #555; /* Cor neutra para o boneco */
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1; /* Começa visível */
 }
-#cabeca { width: 30px; height: 30px; border-radius: 50%; top: 35px; right: 25px; }
-#corpo { width: 5px; height: 50px; top: 65px; right: 39px; transform: translateX(50%); }
-#bracoEsq { width: 30px; height: 5px; top: 75px; right: 39px; transform: rotate(45deg); transform-origin: top left; }
-#bracoDir { width: 30px; height: 5px; top: 75px; right: 15px; transform: rotate(-45deg); transform-origin: top right; }
-#pernaEsq { width: 40px; height: 5px; top: 110px; right: 39px; transform: rotate(-45deg); transform-origin: top left; }
-#pernaDir { width: 40px; height: 5px; top: 110px; right: 10px; transform: rotate(45deg); transform-origin: top right; }
+
+/* Posições e tamanhos para um boneco mais proporcional */
+#corpo { width: 5px; height: 60px; top: 75px; right: 40px; transform: translateX(-50%); }
+#bracoEsq { width: 40px; height: 5px; top: 85px; right: 40px; transform: rotate(45deg); transform-origin: top left; }
+#bracoDir { width: 40px; height: 5px; top: 85px; right: 10px; transform: rotate(-45deg); transform-origin: top right; }
+#pernaEsq { width: 50px; height: 5px; top: 130px; right: 35px; transform: rotate(-45deg); transform-origin: top left; }
+#pernaDir { width: 50px; height: 5px; top: 130px; right: -5px; transform: rotate(45deg); transform-origin: top right; }
