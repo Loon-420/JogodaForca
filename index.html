@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Forca Multijogador</title>
+    <title>Jogo da Forca Multijogador Super Completo</title>
     
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4CAF50"> 
@@ -31,6 +31,15 @@
                 </div>
 
             <div class="bloco-personalizacao">
+                <h3>Dificuldade das Dicas:</h3>
+                <select id="selectDificuldadeDica" class="select-personalizado">
+                    <option value="facil">Fácil</option>
+                    <option value="medio">Médio</option>
+                    <option value="dificil">Difícil</option>
+                </select>
+            </div>
+
+            <div class="bloco-personalizacao">
                 <h3>Selecione a Categoria:</h3>
                 <select id="selectCategoria" class="select-personalizado">
                     <option value="aleatorio">Aleatório</option>
@@ -45,12 +54,13 @@
                 </select>
                 <button id="botaoComecarJogo" class="btn-primary">Começar Jogo</button>
             </div>
-            <button id="botaoIrParaPersonalizacao" class="btn-secondary">⚙️ Personalizar Jogo</button>
+            <button id="botaoIrParaFoto" class="btn-secondary">🖼️ Personalizar Foto</button>
+            <button id="botaoIrParaTema" class="btn-secondary">🎨 Personalizar Tema</button>
+            <button id="botaoVerEstatisticas" class="btn-secondary">📊 Ver Estatísticas</button>
         </section>
 
-        <section id="secaoPersonalizacao" class="secao-card" style="display: none;">
-            <h2>⚙️ Personalização</h2>
-            
+        <section id="secaoPersonalizacaoFoto" class="secao-card" style="display: none;">
+            <h2>🖼️ Personalizar Foto</h2>
             <div class="bloco-personalizacao">
                 <h3>Foto de Perfil</h3>
                 <div class="foto-perfil-container">
@@ -63,16 +73,18 @@
                 <button id="botaoEscolherFoto" class="btn-primary">Escolher Foto</button>
                 <p id="statusFoto" class="mensagem-status"></p>
             </div>
-            
-            <hr>
+            <button id="botaoVoltarParaMenuFoto" class="btn-secondary">Voltar ao Menu</button>
+        </section>
 
+        <section id="secaoPersonalizacaoTema" class="secao-card" style="display: none;">
+            <h2>🎨 Personalizar Tema</h2>
             <div class="bloco-personalizacao">
                 <h3>Cor do Tema</h3>
                 <label for="inputCorTema">Cor Principal:</label>
                 <input type="color" id="inputCorTema" value="#4CAF50">
                 <button id="botaoSalvarTema" class="btn-primary">Salvar Tema</button>
             </div>
-            <button id="botaoVoltarParaMenu" class="btn-secondary">Voltar ao Menu</button>
+            <button id="botaoVoltarParaMenuTema" class="btn-secondary">Voltar ao Menu</button>
         </section>
 
         <section id="secaoJogo" class="secao-card" style="display: none;">
@@ -111,8 +123,14 @@
 
             <p id="mensagemJogo" class="mensagem-status cor-principal-texto">Status do Jogo: Selecione uma categoria!</p>
 
-            <button id="botaoNovoJogo" class="btn-primary">Próximo Turno / Novo Jogo</button>
             <button id="botaoVoltarAoMenuJogo" class="btn-secondary">Voltar ao Menu</button>
+        </section>
+
+        <section id="secaoProximoTurno" class="secao-card" style="display: none;">
+            <h2>Próximo Turno?</h2>
+            <p id="mensagemProximoTurno" class="mensagem-status"></p>
+            <button id="botaoContinuarJogando" class="btn-primary">Continuar Jogando</button>
+            <button id="botaoFinalizarJogo" class="btn-secondary">Finalizar Jogo</button>
         </section>
 
         <section id="secaoResultadosFinais" class="secao-card" style="display: none;">
@@ -120,6 +138,13 @@
             <div id="listaResultados" class="lista-resultados">
                 </div>
             <button id="botaoVoltarDoResultado" class="btn-primary">Voltar ao Menu Principal</button>
+        </section>
+
+        <section id="secaoEstatisticas" class="secao-card" style="display: none;">
+            <h2>📊 Estatísticas do Jogo</h2>
+            <div id="dashboardEstatisticas" class="dashboard-estatisticas">
+                </div>
+            <button id="botaoVoltarDoDashboard" class="btn-primary">Voltar ao Menu Principal</button>
         </section>
 
     </main>
