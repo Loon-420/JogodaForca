@@ -5,7 +5,7 @@
     --cor-principal: #4CAF50; 
     --cor-secundaria-hover: #388E3C; 
     --cor-texto-principal: #ffffff;
-    --cor-fundo-secundario: #f0f0f0; 
+    --cor-fundo-secundario: #f0f0f0; /* Cor de fundo principal do body */
     --cor-erro: #D32F2F; 
     --cor-acerto: #4CAF50; 
     --cor-botao-secundario: #6c757d; 
@@ -19,6 +19,10 @@
     --cor-dashboard-titulo: #343a40;
     --cor-dashboard-texto: #495057;
     --cor-dashboard-valor: var(--cor-principal);
+
+    /* Cor para as partes do boneco da forca (SEMPRE CLARA) */
+    --cor-boneco-forca: #ffffff; /* Definido como branco para visibilidade em qualquer tema */
+    --cor-borda-boneco-forca: #aaaaaa; /* Borda mais escura para contraste */
 }
 
 /* Tema Escuro */
@@ -26,7 +30,7 @@
     --cor-principal: #212121;
     --cor-secundaria-hover: #000000;
     --cor-texto-principal: #ffffff;
-    --cor-fundo-secundario: #333333;
+    --cor-fundo-secundario: #333333; /* Fundo principal escuro */
     --cor-erro: #EF9A9A;
     --cor-acerto: #81C784;
     --cor-botao-secundario: #757575;
@@ -88,7 +92,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--cor-fundo-secundario);
+    background-color: var(--cor-fundo-secundario); /* Usa a variável de fundo secundário do tema */
     text-align: center;
 }
 
@@ -105,7 +109,7 @@ header {
 }
 
 .secao-card {
-    background-color: white;
+    background-color: white; /* As seções card sempre terão fundo branco para melhor legibilidade */
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
@@ -198,15 +202,13 @@ header {
 .select-personalizado:focus, .input-personalizado:focus {
     outline: none;
     border-color: var(--cor-borda-input-foco);
-    /* Usar uma função para obter RGB da cor principal para o box-shadow */
-    /* Exemplo: box-shadow: 0 0 0 2px rgba(var(--cor-principal-rgb), 0.3); */
 }
 
 /* =================================== */
 /* 5. INFORMAÇÕES DO JOGADOR / DICAS */
 /* =================================== */
 .info-jogador-atual {
-    background-color: var(--cor-fundo-secundario);
+    background-color: var(--cor-fundo-secundario); /* Ajustado para usar a variável do tema */
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 15px;
@@ -289,6 +291,9 @@ header {
     height: 250px;
     margin: 20px auto;
     border-bottom: 5px solid black; /* Base da forca */
+    background-color: white; /* Fundo branco fixo para a área da forca */
+    border-radius: 8px; /* Bordas arredondadas para a área da forca */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar a área da forca */
 }
 
 .parte-forca {
@@ -302,7 +307,7 @@ header {
 
 
 /* ======================================= */
-/* ESTILOS DAS PARTES DO BONECO (AGORA REALMENTE ALINHADO) */
+/* ESTILOS DAS PARTES DO BONECO */
 /* ======================================= */
 
 #cabeca-container {
@@ -311,12 +316,12 @@ header {
     height: 50px;
     border-radius: 50%;
     top: 25px; 
-    left: calc(100% - 30px - 25px); /* Centraliza a cabeça na corda (largura da forca - right da corda - metade da largura da cabeça) */
+    left: calc(100% - 30px - 25px); 
     overflow: hidden; 
-    background-color: #f0f0f0; 
-    border: 2px solid #555; 
+    background-color: var(--cor-boneco-forca); /* Usa a nova variável de cor do boneco */
+    border: 2px solid var(--cor-borda-boneco-forca); /* Borda para contraste */
     transition: opacity 0.5s ease-in-out;
-    opacity: 0; /* Começa invisível, JS controlará a visibilidade */
+    opacity: 0; 
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -331,55 +336,47 @@ header {
 
 .parte-boneco {
     position: absolute;
-    background-color: #555; 
+    background-color: var(--cor-boneco-forca); /* Usa a nova variável de cor do boneco */
+    border: 1px solid var(--cor-borda-boneco-forca); /* Borda mais fina para o corpo */
     transition: opacity 0.5s ease-in-out;
-    opacity: 0; /* Começa invisível, JS controlará a visibilidade */
+    opacity: 0; 
     z-index: 0; 
 }
 
 /* Posições e tamanhos para um boneco PERFEITAMENTE RETO E ALINHADO */
-/* O ponto central de referência para o boneco será a base da corda, que é (right: 30px) do .forca-desenho */
-/* O .forca-desenho tem 200px de largura. Então, o ponto 'x' da corda é 200 - 30 = 170px do lado esquerdo. */
-
-/* Calculamos o LEFT para centralizar cada parte do corpo (metade da largura da forca - right da corda - metade da largura da parte) */
-/* Largura total: 200px. Ponto da corda: 170px. */
-/* Centralizar em X: (200 - 30) - (largura da parte / 2) */
-
 #corpo { 
-    width: 5px; /* Largura do corpo */
-    height: 60px; /* Altura do corpo */
-    top: 75px; /* Abaixo da cabeça */
-    left: calc(100% - 30px - 2.5px); /* (200 - 30) - (5/2) = 167.5px */
+    width: 5px; 
+    height: 60px; 
+    top: 75px; 
+    left: calc(100% - 30px - 2.5px); 
 }
 
 #bracoEsq { 
-    width: 30px; /* Largura do braço */
-    height: 5px; /* Espessura do braço */
-    top: 95px; /* Altura do braço, na metade do corpo */
-    left: calc(100% - 30px - 2.5px - 30px); /* (167.5 - 30px) = 137.5px do left */
-    /* Este braço começa à esquerda do corpo e se estende para a esquerda */
+    width: 30px; 
+    height: 5px; 
+    top: 95px; 
+    left: calc(100% - 30px - 2.5px - 30px); 
 }
 
 #bracoDir { 
-    width: 30px; /* Largura do braço */
-    height: 5px; /* Espessura do braço */
-    top: 95px; /* Mesma altura do braço esquerdo */
-    left: calc(100% - 30px + 2.5px); /* (170 + 2.5px) = 172.5px do left (começa à direita do corpo) */
-    /* Este braço começa à direita do corpo e se estende para a direita */
+    width: 30px; 
+    height: 5px; 
+    top: 95px; 
+    left: calc(100% - 30px + 2.5px); 
 }
 
 #pernaEsq { 
-    width: 5px; /* Largura da perna */
-    height: 40px; /* Altura da perna */
-    top: 135px; /* Abaixo do corpo */
-    left: calc(100% - 30px - 2.5px - 10px); /* (167.5 - 10px) = 157.5px do left (um pouco à esquerda do corpo) */
+    width: 5px; 
+    height: 40px; 
+    top: 135px; 
+    left: calc(100% - 30px - 2.5px - 10px); 
 }
 
 #pernaDir { 
-    width: 5px; /* Largura da perna */
-    height: 40px; /* Altura da perna */
-    top: 135px; /* Mesma altura da perna esquerda */
-    left: calc(100% - 30px - 2.5px + 10px); /* (167.5 + 10px) = 177.5px do left (um pouco à direita do corpo) */
+    width: 5px; 
+    height: 40px; 
+    top: 135px; 
+    left: calc(100% - 30px - 2.5px + 10px); 
 }
 
 /* =================================== */
