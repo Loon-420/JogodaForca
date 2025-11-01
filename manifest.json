@@ -2,7 +2,7 @@
   "name": "O Jogo da Forca",
   "short_name": "Forca PWA",
   "description": "Um jogo da forca interativo e personalizável.",
-  "start_url": "/JogodaForca/index.html",
+  "start_url": "/https://loon-420.github.io/JogodaForca/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
