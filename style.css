@@ -21,6 +21,66 @@
     --cor-dashboard-valor: var(--cor-principal);
 }
 
+/* Tema Escuro */
+[data-theme='escuro'] {
+    --cor-principal: #212121;
+    --cor-secundaria-hover: #000000;
+    --cor-texto-principal: #ffffff;
+    --cor-fundo-secundario: #333333;
+    --cor-erro: #EF9A9A;
+    --cor-acerto: #81C784;
+    --cor-botao-secundario: #757575;
+    --cor-botao-secundario-hover: #616161;
+    --cor-borda-input: #555;
+    --cor-borda-input-foco: #64B5F6;
+
+    --cor-dashboard-bg: #424242;
+    --cor-dashboard-item-bg: #525252;
+    --cor-dashboard-titulo: #e0e0e0;
+    --cor-dashboard-texto: #bdbdbd;
+    --cor-dashboard-valor: #64B5F6;
+}
+
+/* Tema Azul */
+[data-theme='azul'] {
+    --cor-principal: #2196F3;
+    --cor-secundaria-hover: #1976D2;
+    --cor-texto-principal: #ffffff;
+    --cor-fundo-secundario: #E3F2FD;
+    --cor-erro: #FF5252;
+    --cor-acerto: #4CAF50;
+    --cor-botao-secundario: #90CAF9;
+    --cor-botao-secundario-hover: #64B5F6;
+    --cor-borda-input: #BBDEFB;
+    --cor-borda-input-foco: #2196F3;
+
+    --cor-dashboard-bg: #BBDEFB;
+    --cor-dashboard-item-bg: #E3F2FD;
+    --cor-dashboard-titulo: #1976D2;
+    --cor-dashboard-texto: #424242;
+    --cor-dashboard-valor: #2196F3;
+}
+
+/* Tema Vermelho */
+[data-theme='vermelho'] {
+    --cor-principal: #F44336;
+    --cor-secundaria-hover: #D32F2F;
+    --cor-texto-principal: #ffffff;
+    --cor-fundo-secundario: #FFEBEE;
+    --cor-erro: #D32F2F;
+    --cor-acerto: #4CAF50;
+    --cor-botao-secundario: #FFCDD2;
+    --cor-botao-secundario-hover: #EF9A9A;
+    --cor-borda-input: #FFCDD2;
+    --cor-borda-input-foco: #F44336;
+
+    --cor-dashboard-bg: #FFCDD2;
+    --cor-dashboard-item-bg: #FFEBEE;
+    --cor-dashboard-titulo: #D32F2F;
+    --cor-dashboard-texto: #424242;
+    --cor-dashboard-valor: #F44336;
+}
+
 /* =================================== */
 /* 2. ESTILOS GERAIS E LAYOUT */
 /* =================================== */
@@ -256,7 +316,7 @@ header {
     background-color: #f0f0f0; 
     border: 2px solid #555; 
     transition: opacity 0.5s ease-in-out;
-    opacity: 0; 
+    opacity: 0; /* Começa invisível, JS controlará a visibilidade */
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -273,7 +333,7 @@ header {
     position: absolute;
     background-color: #555; 
     transition: opacity 0.5s ease-in-out;
-    opacity: 1; 
+    opacity: 0; /* Começa invisível, JS controlará a visibilidade */
     z-index: 0; 
 }
 
@@ -321,7 +381,6 @@ header {
     top: 135px; /* Mesma altura da perna esquerda */
     left: calc(100% - 30px - 2.5px + 10px); /* (167.5 + 10px) = 177.5px do left (um pouco à direita do corpo) */
 }
-
 
 /* =================================== */
 /* 7. RESULTADOS FINAIS */
