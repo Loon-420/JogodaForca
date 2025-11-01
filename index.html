@@ -3,114 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Forca Multijogador Super Completo</title>
-    
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#4CAF50"> 
-    
+    <title>O Jogo da Forca</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-
-    <header class="cor-principal-fundo">
-        <h1>Jogo da Forca Personalizado</h1>
+<body data-theme="padrao"> <header class="cor-principal-fundo">
+        <h1>🎮 O Jogo</h1>
     </header>
 
     <main class="container">
-        
-        <section id="secaoMenu" class="secao-card">
-            <h2>Escolha como Jogar</h2>
-
+        <section id="secaoInicio" class="secao-card">
+            <h2>Bem-vindo(a)!</h2>
             <div class="bloco-personalizacao">
-                <h3>Número de Jogadores:</h3>
-                <input type="number" id="inputNumJogadores" min="1" max="5" value="1" class="input-personalizado">
+                <label for="nomeJogador">Seu Nome:</label>
+                <input type="text" id="nomeJogador" class="input-personalizado" placeholder="Digite seu nome">
             </div>
+            
+            <button id="btnIniciarJogo" class="btn-primary">Iniciar Jogo Solo</button>
+            <button id="btnMultiplayer" class="btn-primary">Multiplayer</button>
+            <button id="btnConfig" class="btn-secondary">Configurações</button>
+            <button id="btnPersonalizar" class="btn-secondary">Personalizar</button>
+        </section>
 
-            <div id="divNomesJogadores" class="bloco-personalizacao" style="display: none;">
-                <h3>Nomes dos Jogadores:</h3>
-                </div>
-
+        <section id="secaoConfig" class="secao-card" style="display:none;">
+            <h2>Configurações do Jogo</h2>
             <div class="bloco-personalizacao">
-                <h3>Dificuldade das Dicas:</h3>
+                <label for="selectCategoria">Categoria:</label>
+                <select id="selectCategoria" class="select-personalizado"></select>
+            </div>
+            <div class="bloco-personalizacao">
+                <label for="selectDificuldadeDica">Dificuldade da Dica:</label>
                 <select id="selectDificuldadeDica" class="select-personalizado">
                     <option value="facil">Fácil</option>
                     <option value="medio">Médio</option>
                     <option value="dificil">Difícil</option>
                 </select>
             </div>
-
-            <div class="bloco-personalizacao">
-                <h3>Selecione a Categoria:</h3>
-                <select id="selectCategoria" class="select-personalizado">
-                    <option value="aleatorio">Aleatório</option>
-                    <option value="animais">Animais</option>
-                    <option value="carros">Carros</option>
-                    <option value="paises">Países</option>
-                    <option value="filmes">Filmes</option>
-                    <option value="series">Séries</option>
-                    <option value="cores">Cores</option>
-                    <option value="frutas">Frutas</option>
-                    <option value="comidas">Comidas</option>
-                </select>
-                <button id="botaoComecarJogo" class="btn-primary">Começar Jogo</button>
-            </div>
-            <button id="botaoIrParaFoto" class="btn-secondary">🖼️ Personalizar Foto</button>
-            <button id="botaoIrParaTema" class="btn-secondary">🎨 Personalizar Tema</button>
-            <button id="botaoVerEstatisticas" class="btn-secondary">📊 Ver Estatísticas</button>
+            <button id="btnSalvarConfig" class="btn-primary">Salvar e Voltar</button>
+            <button id="btnVoltarConfig" class="btn-secondary">Voltar</button>
         </section>
 
-        <section id="secaoPersonalizacaoFoto" class="secao-card" style="display: none;">
-            <h2>🖼️ Personalizar Foto</h2>
+        <section id="secaoPersonalizacao" class="secao-card" style="display:none;">
+            <h2>Personalizar</h2>
             <div class="bloco-personalizacao">
-                <h3>Foto de Perfil</h3>
                 <div class="foto-perfil-container">
-                    <img id="previewFoto" 
-                         src="./icon-192x192.png" 
-                         alt="Foto do Participante" 
-                         class="foto-perfil">
+                    <img id="fotoPerfilDisplay" src="placeholder.png" alt="Foto de Perfil" class="foto-perfil">
                 </div>
-                <input type="file" id="inputFotoParticipante" accept="image/*" style="display: none;"> 
-                <button id="botaoEscolherFoto" class="btn-primary">Escolher Foto</button>
-                <p id="statusFoto" class="mensagem-status"></p>
+                <input type="file" id="fotoPerfilInput" accept="image/*">
+                <p id="mensagemFotoStatus" class="mensagem-status"></p>
             </div>
-            <button id="botaoVoltarParaMenuFoto" class="btn-secondary">Voltar ao Menu</button>
-        </section>
-
-        <section id="secaoPersonalizacaoTema" class="secao-card" style="display: none;">
-            <h2>🎨 Personalizar Tema</h2>
             <div class="bloco-personalizacao">
-                <h3>Cor do Tema</h3>
-                <label for="inputCorTema">Cor Principal:</label>
-                <input type="color" id="inputCorTema" value="#4CAF50">
-                <button id="botaoSalvarTema" class="btn-primary">Salvar Tema</button>
+                <label for="selectTema">Tema:</label>
+                <select id="selectTema" class="select-personalizado">
+                    <option value="padrao">Padrão</option>
+                    <option value="escuro">Escuro</option>
+                    <option value="azul">Azul</option>
+                    <option value="vermelho">Vermelho</option>
+                </select>
             </div>
-            <button id="botaoVoltarParaMenuTema" class="btn-secondary">Voltar ao Menu</button>
+            <button id="btnAplicarPersonalizacao" class="btn-primary">Aplicar e Voltar</button>
         </section>
 
-        <section id="secaoJogo" class="secao-card" style="display: none;">
-            <h2>🎮 O Jogo</h2>
-
-            <div id="infoJogadorAtual" class="info-jogador-atual">
-                <p>Jogador Atual: <span id="nomeJogadorAtual" class="cor-principal-texto"></span></p>
-                <p>Pontuação: <span id="pontuacaoJogadorAtual" class="cor-principal-texto">0</span></p>
+        <section id="secaoMultiplayer" class="secao-card" style="display:none;">
+            <h2>Configurar Multiplayer</h2>
+            <div class="bloco-personalizacao">
+                <label for="numJogadores">Número de Jogadores:</label>
+                <select id="numJogadores" class="select-personalizado">
+                    <option value="1">1 Jogador</option>
+                    <option value="2">2 Jogadores</option>
+                    <option value="3">3 Jogadores</option>
+                    <option value="4">4 Jogadores</option>
+                </select>
             </div>
-            
-            <p id="dicaDisplay" class="dica-display">Dica: <span id="textoDica"></span></p>
+            <div id="containerNomesJogadores">
+                </div>
+            <button id="btnConfirmarJogadores" class="btn-primary">Confirmar e Iniciar Jogo</button>
+            <button id="btnVoltarMultiplayer" class="btn-secondary">Voltar</button>
+        </section>
 
-            <div id="palavraDisplay" class="palavra-display cor-principal-texto">
-                _ _ _ _ _ _ _
+
+        <section id="secaoJogo" class="secao-card" style="display:none;">
+            <div class="info-jogador-atual">
+                <span>Jogador: <span id="nomeJogadorAtual" class="cor-principal-texto"></span></span>
+                <span>Pontuação: <span id="pontuacaoJogadorAtual" class="cor-principal-texto">0</span></span>
+            </div>
+            <div class="dica-display">
+                Dica: <span id="textoDica"></span>
             </div>
 
-            <div id="forcaDesenho" class="forca-desenho">
-                <div class="parte-forca base"></div>
+            <div class="forca-desenho">
                 <div class="parte-forca viga"></div>
                 <div class="parte-forca topo"></div>
                 <div class="parte-forca corda"></div>
-                
                 <div id="cabeca-container">
-                    <img id="cabeca-foto" src="./icon-192x192.png" alt="Foto do Participante" />
+                    <img id="cabeca-foto" src="placeholder.png" alt="Foto">
                 </div>
-
                 <div id="corpo" class="parte-boneco"></div>
                 <div id="bracoEsq" class="parte-boneco"></div>
                 <div id="bracoDir" class="parte-boneco"></div>
@@ -118,33 +105,25 @@
                 <div id="pernaDir" class="parte-boneco"></div>
             </div>
 
+            <p id="palavraDisplay" class="palavra-display">_ _ _ _ _</p>
+            <p id="mensagemJogo"></p>
+
             <div id="teclado" class="teclado-letras">
-            </div>
-
-            <p id="mensagemJogo" class="mensagem-status cor-principal-texto">Status do Jogo: Selecione uma categoria!</p>
-
-            <button id="botaoVoltarAoMenuJogo" class="btn-secondary">Voltar ao Menu</button>
-        </section>
-
-        <section id="secaoProximoTurno" class="secao-card" style="display: none;">
-            <h2>Próximo Turno?</h2>
-            <p id="mensagemProximoTurno" class="mensagem-status"></p>
-            <button id="botaoContinuarJogando" class="btn-primary">Continuar Jogando</button>
-            <button id="botaoFinalizarJogo" class="btn-secondary">Finalizar Jogo</button>
-        </section>
-
-        <section id="secaoResultadosFinais" class="secao-card" style="display: none;">
-            <h2>🏆 Resultados Finais</h2>
-            <div id="listaResultados" class="lista-resultados">
                 </div>
-            <button id="botaoVoltarDoResultado" class="btn-primary">Voltar ao Menu Principal</button>
         </section>
 
-        <section id="secaoEstatisticas" class="secao-card" style="display: none;">
-            <h2>📊 Estatísticas do Jogo</h2>
+        <section id="secaoProximoTurno" class="secao-card" style="display:none;">
+            <p id="mensagemProximoTurno"></p>
+            <button id="btnContinuarOuFinalizar" class="btn-primary">Continuar / Finalizar</button>
+            <button id="btnVerEstatisticas" class="btn-secondary">Ver Estatísticas</button>
+        </section>
+
+        <section id="secaoEstatisticas" class="secao-card" style="display:none;">
+            <h2>Estatísticas do Jogo</h2>
             <div id="dashboardEstatisticas" class="dashboard-estatisticas">
                 </div>
-            <button id="botaoVoltarDoDashboard" class="btn-primary">Voltar ao Menu Principal</button>
+            <button id="btnNovoJogoEstat" class="btn-primary">Novo Jogo</button>
+            <button id="btnVoltarJogoEstat" class="btn-secondary">Voltar ao Jogo</button>
         </section>
 
     </main>
