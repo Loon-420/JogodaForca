@@ -6,8 +6,16 @@
     <title>O Jogo da Forca</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body data-theme="padrao"> <header class="cor-principal-fundo">
+
+    <link rel="manifest" href="/JogodaForca/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Forca PWA">
+    <link rel="apple-touch-icon" href="/JogodaForca/icons/icon-192x192.png">
+    <meta name="theme-color" content="#4CAF50">
+    </head>
+<body data-theme="padrao">
+    <header class="cor-principal-fundo">
         <h1>🎮 O Jogo</h1>
     </header>
 
@@ -47,7 +55,7 @@
             <h2>Personalizar</h2>
             <div class="bloco-personalizacao">
                 <div class="foto-perfil-container">
-                    <img id="fotoPerfilDisplay" src="placeholder.png" alt="Foto de Perfil" class="foto-perfil">
+                    <img id="fotoPerfilDisplay" src="/JogodaForca/placeholder.png" alt="Foto de Perfil" class="foto-perfil">
                 </div>
                 <input type="file" id="fotoPerfilInput" accept="image/*">
                 <p id="mensagemFotoStatus" class="mensagem-status"></p>
@@ -81,7 +89,6 @@
             <button id="btnVoltarMultiplayer" class="btn-secondary">Voltar</button>
         </section>
 
-
         <section id="secaoJogo" class="secao-card" style="display:none;">
             <div class="info-jogador-atual">
                 <span>Jogador: <span id="nomeJogadorAtual" class="cor-principal-texto"></span></span>
@@ -96,7 +103,7 @@
                 <div class="parte-forca topo"></div>
                 <div class="parte-forca corda"></div>
                 <div id="cabeca-container">
-                    <img id="cabeca-foto" src="placeholder.png" alt="Foto">
+                    <img id="cabeca-foto" src="/JogodaForca/placeholder.png" alt="Foto">
                 </div>
                 <div id="corpo" class="parte-boneco"></div>
                 <div id="bracoEsq" class="parte-boneco"></div>
