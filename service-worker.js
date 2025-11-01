@@ -1,11 +1,12 @@
-const CACHE_NAME = 'forca-pwa-cache-v2'; // Alterado para v2 para forçar a atualização
+// service-worker.js
+const CACHE_NAME = 'forca-pwa-cache-v3'; // Alterado para v3 para forçar a atualização do cache
 const urlsToCache = [
   '/JogodaForca/', 
   '/JogodaForca/index.html',
   '/JogodaForca/style.css',
   '/JogodaForca/app.js',
-  '/JogodaForca/placeholder.png', // Certifique-se que esta imagem existe na raiz
-  '/JogodaForca/icons/icon-192x192.png', // Certifique-se que estas imagens existam na pasta icons
+  '/JogodaForca/placeholder.png', 
+  '/JogodaForca/icons/icon-192x192.png',
   '/JogodaForca/icons/icon-512x512.png',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'
 ];
@@ -32,9 +33,12 @@ self.addEventListener('fetch', event => {
         }
         // Se não estiver no cache, tenta buscar na rede
         return fetch(event.request).catch(() => {
-            // Caso a rede também falhe (offline), você pode retornar uma página offline aqui
+            // Este catch é importante para lidar com o offline se o recurso não estiver no cache
+            // Aqui você pode retornar uma página offline personalizada, se tiver uma
             // Ex: return caches.match('/JogodaForca/offline.html');
             console.log('Service Worker: Falha ao buscar recurso na rede e não encontrado no cache.', event.request.url);
+            // Em caso de falha total, para evitar um erro no navegador, você pode retornar uma resposta vazia ou um erro
+            return new Response(null, { status: 503, statusText: 'Service Unavailable' });
         });
       })
   );
