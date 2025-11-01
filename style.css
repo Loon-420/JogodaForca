@@ -228,7 +228,7 @@ header {
     width: 200px;
     height: 250px;
     margin: 20px auto;
-    border-bottom: 5px solid black;
+    border-bottom: 5px solid black; /* Base da forca */
 }
 
 .parte-forca {
@@ -240,8 +240,9 @@ header {
 .topo { width: 150px; height: 5px; top: 0; left: 20px; }
 .corda { width: 5px; height: 30px; top: 5px; right: 30px; }
 
+
 /* ======================================= */
-/* ESTILOS DAS PARTES DO BONECO (AJUSTADO E BONITINHO) */
+/* ESTILOS DAS PARTES DO BONECO (AGORA REALMENTE ALINHADO) */
 /* ======================================= */
 
 #cabeca-container {
@@ -250,7 +251,7 @@ header {
     height: 50px;
     border-radius: 50%;
     top: 25px; 
-    left: 73px; /* Centralizando melhor com a corda */
+    left: calc(100% - 30px - 25px); /* Centraliza a cabeça na corda (largura da forca - right da corda - metade da largura da cabeça) */
     overflow: hidden; 
     background-color: #f0f0f0; 
     border: 2px solid #555; 
@@ -259,7 +260,7 @@ header {
     display: flex; 
     justify-content: center;
     align-items: center;
-    z-index: 1; /* Garante que a cabeça esteja acima do corpo */
+    z-index: 1; 
 }
 #cabeca-foto {
     width: 100%;
@@ -273,50 +274,53 @@ header {
     background-color: #555; 
     transition: opacity 0.5s ease-in-out;
     opacity: 1; 
-    /* left: 50%; */ /* Removido para posicionamento manual mais preciso */
-    /* transform: translateX(-50%); */ /* Removido para posicionamento manual mais preciso */
-    z-index: 0; /* Garante que o corpo esteja atrás da cabeça */
+    z-index: 0; 
 }
 
-/* Posições e tamanhos para um boneco mais proporcional e alinhado */
+/* Posições e tamanhos para um boneco PERFEITAMENTE RETO E ALINHADO */
+/* O ponto central de referência para o boneco será a base da corda, que é (right: 30px) do .forca-desenho */
+/* O .forca-desenho tem 200px de largura. Então, o ponto 'x' da corda é 200 - 30 = 170px do lado esquerdo. */
+
+/* Calculamos o LEFT para centralizar cada parte do corpo (metade da largura da forca - right da corda - metade da largura da parte) */
+/* Largura total: 200px. Ponto da corda: 170px. */
+/* Centralizar em X: (200 - 30) - (largura da parte / 2) */
+
 #corpo { 
-    width: 5px; 
-    height: 60px; 
-    top: 75px; 
-    left: 98px; /* Centraliza no eixo X da corda */
+    width: 5px; /* Largura do corpo */
+    height: 60px; /* Altura do corpo */
+    top: 75px; /* Abaixo da cabeça */
+    left: calc(100% - 30px - 2.5px); /* (200 - 30) - (5/2) = 167.5px */
 }
+
 #bracoEsq { 
-    width: 40px; 
-    height: 5px; 
-    top: 85px; /* Altura do braço */
-    left: 78px; /* Ponto de partida do braço esquerdo */
-    transform-origin: right center; /* Pivô na conexão com o corpo */
-    transform: rotate(-35deg); /* Angulação para cima */
+    width: 30px; /* Largura do braço */
+    height: 5px; /* Espessura do braço */
+    top: 95px; /* Altura do braço, na metade do corpo */
+    left: calc(100% - 30px - 2.5px - 30px); /* (167.5 - 30px) = 137.5px do left */
+    /* Este braço começa à esquerda do corpo e se estende para a esquerda */
 }
+
 #bracoDir { 
-    width: 40px; 
-    height: 5px; 
-    top: 85px; /* Altura do braço */
-    left: 98px; /* Ponto de partida do braço direito (onde o corpo termina) */
-    transform-origin: left center; /* Pivô na conexão com o corpo */
-    transform: rotate(35deg); /* Angulação para cima */
+    width: 30px; /* Largura do braço */
+    height: 5px; /* Espessura do braço */
+    top: 95px; /* Mesma altura do braço esquerdo */
+    left: calc(100% - 30px + 2.5px); /* (170 + 2.5px) = 172.5px do left (começa à direita do corpo) */
+    /* Este braço começa à direita do corpo e se estende para a direita */
 }
+
 #pernaEsq { 
-    width: 40px; /* Largura da perna */
-    height: 5px; 
-    top: 130px; /* Altura da perna (abaixo do corpo) */
-    left: 78px; /* Ponto de partida da perna esquerda */
-    transform-origin: right center; /* Pivô na conexão com o corpo */
-    transform: rotate(35deg); /* Angulação para baixo */
+    width: 5px; /* Largura da perna */
+    height: 40px; /* Altura da perna */
+    top: 135px; /* Abaixo do corpo */
+    left: calc(100% - 30px - 2.5px - 10px); /* (167.5 - 10px) = 157.5px do left (um pouco à esquerda do corpo) */
 }
+
 #pernaDir { 
-    width: 40px; /* Largura da perna */
-    height: 5px; 
-    top: 130px; /* Altura da perna (abaixo do corpo) */
-    left: 98px; /* Ponto de partida da perna direita (onde o corpo termina) */
-    transform-origin: left center; /* Pivô na conexão com o corpo */
-    transform: rotate(-35deg); /* Angulação para baixo */
-} 
+    width: 5px; /* Largura da perna */
+    height: 40px; /* Altura da perna */
+    top: 135px; /* Mesma altura da perna esquerda */
+    left: calc(100% - 30px - 2.5px + 10px); /* (167.5 + 10px) = 177.5px do left (um pouco à direita do corpo) */
+}
 
 
 /* =================================== */
