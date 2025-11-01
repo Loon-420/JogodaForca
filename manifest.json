@@ -1,14 +1,10 @@
 {
   "name": "O Jogo da Forca",
-  "lang": "pt",
-  "dir": "ltr",
-  "short_name": "loon-420.github",
+  "short_name": "Forca",
   "description": "Um jogo da forca interativo e personalizável.",
-  "start_url": "/https://loon-420.github.io/JogodaForca/",
-  "orientation": "portrait",
+  "start_url": "/JogodaForca/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "scope": "/",
   "theme_color": "#4CAF50",
   "icons": [
     {
@@ -21,5 +17,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "scope": "/JogodaForca/"
 }
