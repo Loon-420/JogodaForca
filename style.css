@@ -259,6 +259,7 @@ header {
     display: flex; 
     justify-content: center;
     align-items: center;
+    z-index: 1; /* Garante que a cabeça esteja acima do corpo */
 }
 #cabeca-foto {
     width: 100%;
@@ -272,8 +273,9 @@ header {
     background-color: #555; 
     transition: opacity 0.5s ease-in-out;
     opacity: 1; 
-    left: 50%; 
-    transform: translateX(-50%); 
+    /* left: 50%; */ /* Removido para posicionamento manual mais preciso */
+    /* transform: translateX(-50%); */ /* Removido para posicionamento manual mais preciso */
+    z-index: 0; /* Garante que o corpo esteja atrás da cabeça */
 }
 
 /* Posições e tamanhos para um boneco mais proporcional e alinhado */
@@ -281,39 +283,41 @@ header {
     width: 5px; 
     height: 60px; 
     top: 75px; 
+    left: 98px; /* Centraliza no eixo X da corda */
 }
 #bracoEsq { 
     width: 40px; 
     height: 5px; 
-    top: 90px; /* Levemente mais para baixo */
-    left: 50%; 
-    transform: translateX(-50%) rotate(-45deg) translateX(-20px); 
-    transform-origin: center; 
+    top: 85px; /* Altura do braço */
+    left: 78px; /* Ponto de partida do braço esquerdo */
+    transform-origin: right center; /* Pivô na conexão com o corpo */
+    transform: rotate(-35deg); /* Angulação para cima */
 }
 #bracoDir { 
     width: 40px; 
     height: 5px; 
-    top: 90px; /* Levemente mais para baixo */
-    left: 50%; 
-    transform: translateX(-50%) rotate(45deg) translateX(20px); 
-    transform-origin: center; 
+    top: 85px; /* Altura do braço */
+    left: 98px; /* Ponto de partida do braço direito (onde o corpo termina) */
+    transform-origin: left center; /* Pivô na conexão com o corpo */
+    transform: rotate(35deg); /* Angulação para cima */
 }
 #pernaEsq { 
-    width: 50px; 
+    width: 40px; /* Largura da perna */
     height: 5px; 
-    top: 140px; /* Mais para baixo para corrigir a posição */
-    left: 50%; 
-    transform: translateX(-50%) rotate(30deg) translateX(-15px); /* Ângulo mais suave */
-    transform-origin: center; 
+    top: 130px; /* Altura da perna (abaixo do corpo) */
+    left: 78px; /* Ponto de partida da perna esquerda */
+    transform-origin: right center; /* Pivô na conexão com o corpo */
+    transform: rotate(35deg); /* Angulação para baixo */
 }
 #pernaDir { 
-    width: 50px; 
+    width: 40px; /* Largura da perna */
     height: 5px; 
-    top: 140px; /* Mais para baixo para corrigir a posição */
-    left: 50%; 
-    transform: translateX(-50%) rotate(-30deg) translateX(15px); /* Ângulo mais suave */
-    transform-origin: center; 
+    top: 130px; /* Altura da perna (abaixo do corpo) */
+    left: 98px; /* Ponto de partida da perna direita (onde o corpo termina) */
+    transform-origin: left center; /* Pivô na conexão com o corpo */
+    transform: rotate(-35deg); /* Angulação para baixo */
 } 
+
 
 /* =================================== */
 /* 7. RESULTADOS FINAIS */
