@@ -1,40 +1,19 @@
 {
-  "name": "Jogo da Forca Personalizado",
-  "short_name": "Forca",
-  "description": "Um jogo da forca com fotos e temas personalizáveis, pronto para Android.",
-  "start_url": "./index.html",
+  "name": "O Jogo da Forca",
+  "short_name": "Forca PWA",
+  "description": "Um jogo da forca interativo e personalizável.",
+  "start_url": "/JogodaForca/index.html",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#4CAF50", 
+  "theme_color": "#4CAF50",
   "icons": [
     {
-      "src": "icon-72x72.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-128x128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-192x192.png",
+      "src": "/JogodaForca/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-512x512.png",
+      "src": "/JogodaForca/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
