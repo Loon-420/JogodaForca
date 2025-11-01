@@ -98,7 +98,7 @@ const btnIniciarJogo = document.getElementById('btnIniciarJogo');
 const btnConfig = document.getElementById('btnConfig');
 const btnPersonalizar = document.getElementById('btnPersonalizar');
 const btnSalvarConfig = document.getElementById('btnSalvarConfig');
-const btnVoltarInicio = document.getElementById('btnVoltarInicio');
+const btnVoltarInicio = document.getElementById('btnVoltarInicio'); // Este botão não está sendo usado no HTML atual
 const btnContinuarOuFinalizar = document.getElementById('btnContinuarOuFinalizar');
 const btnVerEstatisticas = document.getElementById('btnVerEstatisticas');
 const btnNovoJogoEstat = document.getElementById('btnNovoJogoEstat');
@@ -150,8 +150,9 @@ function carregarFotoPerfil() {
         fotoPerfilDisplay.src = fotoSalva;
         document.getElementById('cabeca-foto').src = fotoSalva;
     } else {
-        fotoPerfilDisplay.src = 'placeholder.png'; // Imagem padrão
-        document.getElementById('cabeca-foto').src = 'placeholder.png'; // Imagem padrão
+        // Use o caminho correto para o placeholder
+        fotoPerfilDisplay.src = '/JogodaForca/placeholder.png'; 
+        document.getElementById('cabeca-foto').src = '/JogodaForca/placeholder.png'; 
     }
 }
 
@@ -485,5 +486,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listener para seleção de número de jogadores
     numJogadoresSelect.addEventListener('change', gerarInputsNomesJogadores);
     btnConfirmarJogadores.addEventListener('click', iniciarNovoJogo);
+
+
+    // PWA: Registro do Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/JogodaForca/service-worker.js')
+                .then(registration => {
+                    console.log('ServiceWorker registrado com sucesso:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Falha no registro do ServiceWorker:', error);
+                });
+        });
+    }
 
 });
