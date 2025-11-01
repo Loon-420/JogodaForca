@@ -7,11 +7,18 @@
     --cor-texto-principal: #ffffff;
     --cor-fundo-secundario: #f0f0f0; 
     --cor-erro: #D32F2F; 
-    --cor-acerto: #4CAF50; /* Verde para acertos */
+    --cor-acerto: #4CAF50; 
     --cor-botao-secundario: #6c757d; 
     --cor-botao-secundario-hover: #5a6268; 
     --cor-borda-input: #ccc;
     --cor-borda-input-foco: var(--cor-principal);
+
+    /* Cores para o Dashboard */
+    --cor-dashboard-bg: #e9ecef;
+    --cor-dashboard-item-bg: #ffffff;
+    --cor-dashboard-titulo: #343a40;
+    --cor-dashboard-texto: #495057;
+    --cor-dashboard-valor: var(--cor-principal);
 }
 
 /* =================================== */
@@ -91,6 +98,7 @@ header {
     background-color: var(--cor-botao-secundario-hover);
 }
 
+
 /* =================================== */
 /* 4. SEÇÃO DE FOTO E PERSONALIZAÇÃO */
 /* =================================== */
@@ -130,7 +138,8 @@ header {
 .select-personalizado:focus, .input-personalizado:focus {
     outline: none;
     border-color: var(--cor-borda-input-foco);
-    box-shadow: 0 0 0 2px rgba(var(--cor-principal-rgb), 0.3); /* Ajustar rgb no JS */
+    /* Usar uma função para obter RGB da cor principal para o box-shadow */
+    /* Exemplo: box-shadow: 0 0 0 2px rgba(var(--cor-principal-rgb), 0.3); */
 }
 
 /* =================================== */
@@ -165,8 +174,8 @@ header {
 /* =================================== */
 
 .palavra-display {
-    font-size: 2.2em; /* Um pouco maior */
-    letter-spacing: 12px; /* Espaçamento maior */
+    font-size: 2.2em; 
+    letter-spacing: 12px; 
     margin-bottom: 25px;
     font-weight: bold;
 }
@@ -175,27 +184,27 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 6px; /* Espaçamento maior entre teclas */
+    gap: 6px; 
     margin-top: 20px;
 }
 
 .btn-letra {
-    background-color: #e0e0e0; /* Cor mais suave */
+    background-color: #e0e0e0; 
     color: #333;
     border: none;
-    width: 35px; /* Teclas um pouco maiores */
+    width: 35px; 
     height: 35px;
-    border-radius: 6px; /* Bordas mais arredondadas */
+    border-radius: 6px; 
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.1em; /* Fonte um pouco maior */
+    font-size: 1.1em; 
     transition: background-color 0.2s, opacity 0.2s, transform 0.1s;
 }
 
 .btn-letra:not([disabled]):hover {
     background-color: var(--cor-principal);
     color: var(--cor-texto-principal);
-    transform: translateY(-2px); /* Efeito de elevação */
+    transform: translateY(-2px); 
 }
 
 .btn-letra[disabled] {
@@ -247,7 +256,7 @@ header {
     border: 2px solid #555; 
     transition: opacity 0.5s ease-in-out;
     opacity: 0; 
-    display: flex; /* Para centralizar a imagem dentro do container */
+    display: flex; 
     justify-content: center;
     align-items: center;
 }
@@ -260,7 +269,7 @@ header {
 
 .parte-boneco {
     position: absolute;
-    background-color: #555; /* Cor neutra para o boneco */
+    background-color: #555; 
     transition: opacity 0.5s ease-in-out;
     opacity: 1; 
     left: 50%; 
@@ -276,7 +285,7 @@ header {
 #bracoEsq { 
     width: 40px; 
     height: 5px; 
-    top: 85px; 
+    top: 90px; /* Levemente mais para baixo */
     left: 50%; 
     transform: translateX(-50%) rotate(-45deg) translateX(-20px); 
     transform-origin: center; 
@@ -284,7 +293,7 @@ header {
 #bracoDir { 
     width: 40px; 
     height: 5px; 
-    top: 85px; 
+    top: 90px; /* Levemente mais para baixo */
     left: 50%; 
     transform: translateX(-50%) rotate(45deg) translateX(20px); 
     transform-origin: center; 
@@ -292,17 +301,17 @@ header {
 #pernaEsq { 
     width: 50px; 
     height: 5px; 
-    top: 130px; 
+    top: 140px; /* Mais para baixo para corrigir a posição */
     left: 50%; 
-    transform: translateX(-50%) rotate(45deg) translateX(-15px); 
+    transform: translateX(-50%) rotate(30deg) translateX(-15px); /* Ângulo mais suave */
     transform-origin: center; 
 }
 #pernaDir { 
     width: 50px; 
     height: 5px; 
-    top: 130px; 
+    top: 140px; /* Mais para baixo para corrigir a posição */
     left: 50%; 
-    transform: translateX(-50%) rotate(-45deg) translateX(15px); 
+    transform: translateX(-50%) rotate(-30deg) translateX(15px); /* Ângulo mais suave */
     transform-origin: center; 
 } 
 
@@ -329,4 +338,44 @@ header {
 .resultado-jogador .pontuacao {
     font-weight: bold;
     color: #333;
+}
+
+/* =================================== */
+/* 8. DASHBOARD DE ESTATÍSTICAS */
+/* =================================== */
+.dashboard-estatisticas {
+    background-color: var(--cor-dashboard-bg);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.dashboard-item {
+    background-color: var(--cor-dashboard-item-bg);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.dashboard-item h4 {
+    color: var(--cor-dashboard-titulo);
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.dashboard-item p {
+    color: var(--cor-dashboard-texto);
+    font-size: 0.8em;
+    margin: 0;
+}
+
+.dashboard-item .valor {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--cor-dashboard-valor);
 }
